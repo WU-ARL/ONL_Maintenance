@@ -1,0 +1,93 @@
+---
+# tasks file for kvm_scripts
+
+- name: make KVM_Images required directories
+  file: path=/KVM_Images/scripts state=directory owner=root group=root mode=0755
+  become: yes
+
+  file: path=/KVM_Images/scripts/lists state=directory owner=root group=root mode=0755
+  become: yes
+
+- name: copy to_mac to /KVM_Images/scripts
+  copy: dest=/KVM_Images/scripts/to_mac  src=roles/kvm_scripts/files/to_mac owner=root group=root mode=0755
+  become: yes
+
+- name: copy to_mac.c to /KVM_Images/scripts
+  copy: dest=/KVM_Images/scripts/to_mac.c  src=roles/kvm_scripts/files/to_mac.c owner=root group=root mode=0644
+  become: yes
+
+- name: copy to_mac.o to /KVM_Images/scripts
+  copy: dest=/KVM_Images/scripts/to_mac.o  src=roles/kvm_scripts/files/to_mac.o owner=root group=root mode=0644
+  become: yes
+
+- name: copy Makefile to /KVM_Images/scripts
+  copy: dest=/KVM_Images/scripts/Makefile  src=roles/kvm_scripts/files/Makefile owner=root group=root mode=0644
+  become: yes
+
+- name: copy interfaces.vm to /KVM_Images/scripts
+  copy: dest=/KVM_Images/scripts/interfaces.vm  src=roles/kvm_scripts/files/interfaces.vm owner=root group=root mode=0755
+  become: yes
+
+- name: copy add_control_routes.sh to /KVM_Images/scripts
+  copy: dest=/KVM_Images/scripts/add_control_routes.sh  src=roles/kvm_scripts/files/add_control_routes.sh owner=root group=root mode=0755
+  become: yes
+
+- name: copy start_new_vm.sh to /KVM_Images/scripts
+  copy: dest=/KVM_Images/scripts/start_new_vm.sh  src=roles/kvm_scripts/files/start_new_vm.sh owner=root group=root mode=0755
+  become: yes
+
+- name: copy prepare_vm.sh to /KVM_Images/scripts
+  copy: dest=/KVM_Images/scripts/prepare_vm.sh  src=roles/kvm_scripts/files/prepare_vm.sh owner=root group=root mode=0755
+  become: yes
+
+- name: copy try_timeout.sh to /KVM_Images/scripts
+  copy: dest=/KVM_Images/scripts/try_timeout.sh  src=roles/kvm_scripts/files/try_timeout.sh owner=root group=root mode=0755
+  become: yes
+
+- name: copy create_blank_vm.sh to /KVM_Images/scripts
+  copy: dest=/KVM_Images/scripts/create_blank_vm.sh  src=roles/kvm_scripts/files/create_blank_vm.sh owner=root group=root mode=0755
+  become: yes
+
+- name: copy generate_data_ip_serial.sh to /KVM_Images/scripts
+  copy: dest=/KVM_Images/scripts/generate_data_ip_serial.sh  src=roles/kvm_scripts/files/generate_data_ip_serial.sh owner=root group=root mode=0755
+  become: yes
+
+- name: copy setup_networking.sh to /KVM_Images/scripts
+  copy: dest=/KVM_Images/scripts/setup_networking.sh  src=roles/kvm_scripts/files/setup_networking.sh owner=root group=root mode=0755
+  become: yes
+
+- name: copy setup_vlan.sh to /KVM_Images/scripts
+  copy: dest=/KVM_Images/scripts/setup_vlan.sh  src=roles/kvm_scripts/files/setup_vlan.sh owner=root group=root mode=0755
+  become: yes
+
+- name: copy add_control_routes.sh to /KVM_Images/scripts
+  copy: dest=/KVM_Images/scripts/add_control_routes.sh  src=roles/kvm_scripts/files/add_control_routes.sh owner=root group=root mode=0755
+  become: yes
+
+- name: copy vm_configure_port.sh to /KVM_Images/scripts
+  copy: dest=/KVM_Images/scripts/vm_configure_port.sh  src=roles/kvm_scripts/files/vm_configure_port.sh owner=root group=root mode=0755
+  become: yes
+
+- name: copy swrd_configure_port.sh to /KVM_Images/scripts
+  copy: dest=/KVM_Images/scripts/swrd_configure_port.sh  src=roles/kvm_scripts/files/swrd_configure_port.sh owner=root group=root mode=0755
+  become: yes
+
+- name: copy onl_cfgvlan.sh to /KVM_Images/scripts
+  copy: dest=/KVM_Images/scripts/onl_cfgvlan.sh  src=roles/kvm_scripts/files/onl_cfgvlan.sh owner=root group=root mode=0755
+  become: yes
+
+- name: copy undefine_vm.sh to /KVM_Images/scripts
+  copy: dest=/KVM_Images/scripts/undefine_vm.sh  src=roles/kvm_scripts/files/undefine_vm.sh owner=root group=root mode=0755
+  become: yes
+
+- name: copy cleanup_vlan.sh to /KVM_Images/scripts
+  copy: dest=/KVM_Images/scripts/cleanup_vlan.sh  src=roles/kvm_scripts/files/cleanup_vlan.sh owner=root group=root mode=0755
+  become: yes
+
+- name: copy rt_tables.vm to /KVM_Images/scripts
+  copy: dest=/KVM_Images/scripts/rt_tables.vm  src=roles/kvm_scripts/files/rt_tables.vm owner=root group=root mode=0644
+  become: yes
+
+- name: create control routes file
+  template: src=control_routes.j2 dest=/KVM_Images/scripts/{{inventory_hostname}}_control_routes owner=root group=root mode=0644
+  become: yes

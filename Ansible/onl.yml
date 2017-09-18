@@ -1,0 +1,8 @@
+---
+- name: configure pc12cores
+  hosts: pc12cores
+  become: yes
+  roles:
+  - {role: 'kvm_scripts', tags: 'kvm_scripts'}  # to use the tag, use this option: --tags "kvm_scripts"
+
+
